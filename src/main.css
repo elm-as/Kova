@@ -1,0 +1,142 @@
+@import 'tailwindcss';
+@import './styles/theme.css';
+@import './index.css';
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --radius: 0.25rem;
+  --background: #F6F5F0;
+  --foreground: #0F1419;
+  --card: #FFFFFF;
+  --card-foreground: #0F1419;
+  --popover: #FFFFFF;
+  --popover-foreground: #0F1419;
+  --primary: #0F1419;
+  --primary-foreground: #F6F5F0;
+  --secondary: #ECEAE3;
+  --secondary-foreground: #1E242B;
+  --muted: #EFEDE6;
+  --muted-foreground: #525866;
+  --accent: #ECEAE3;
+  --accent-foreground: #0F1419;
+  --destructive: #B91C1C;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(15, 20, 25, 0.12);
+  --input: rgba(15, 20, 25, 0.16);
+  --ring: #0F1419;
+  --chart-1: #0F5132;
+  --chart-2: #0F1419;
+  --chart-3: #92400E;
+  --chart-4: #475569;
+  --chart-5: #1D4ED8;
+  --sidebar: #FFFFFF;
+  --sidebar-foreground: #0F1419;
+  --sidebar-primary: #0F1419;
+  --sidebar-primary-foreground: #F6F5F0;
+  --sidebar-accent: #F6F5F0;
+  --sidebar-accent-foreground: #0F1419;
+  --sidebar-border: rgba(15, 20, 25, 0.10);
+  --sidebar-ring: #0F1419;
+}
+
+.dark {
+  --background: #0D1014;
+  --foreground: #F4F3EE;
+  --card: #151920;
+  --card-foreground: #F4F3EE;
+  --popover: #151920;
+  --popover-foreground: #F4F3EE;
+  --primary: #F4F3EE;
+  --primary-foreground: #0D1014;
+  --secondary: #1E242D;
+  --secondary-foreground: #F4F3EE;
+  --muted: #1B2028;
+  --muted-foreground: #9BA3AF;
+  --accent: #222934;
+  --accent-foreground: #F4F3EE;
+  --destructive: #DC2626;
+  --destructive-foreground: #FFFFFF;
+  --border: rgba(244, 243, 238, 0.12);
+  --input: rgba(244, 243, 238, 0.18);
+  --ring: #F4F3EE;
+  --chart-1: #34D399;
+  --chart-2: #F4F3EE;
+  --chart-3: #FBBF24;
+  --chart-4: #94A3B8;
+  --chart-5: #60A5FA;
+  --sidebar: #11151B;
+  --sidebar-foreground: #F4F3EE;
+  --sidebar-primary: #F4F3EE;
+  --sidebar-primary-foreground: #0D1014;
+  --sidebar-accent: #1B212A;
+  --sidebar-accent-foreground: #F4F3EE;
+  --sidebar-border: rgba(244, 243, 238, 0.10);
+  --sidebar-ring: #F4F3EE;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --font-serif: "Instrument Serif", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  }
+}

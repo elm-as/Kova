@@ -1,0 +1,49 @@
+/* Kova — Editorial Typography, Tabular Figures & Native Top-Layer Dialog */
+
+@layer base {
+  body {
+    font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  .tabular-nums,
+  .font-mono,
+  table td,
+  table th {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer utilities {
+  .font-editorial {
+    font-family: "Instrument Serif", Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+}
+
+::selection {
+  background-color: #0F1419;
+  color: #F6F5F0;
+}
+
+.dark ::selection {
+  background-color: #F4F3EE;
+  color: #0D1014;
+}
+
+dialog.kova-dialog[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+dialog.kova-dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog.kova-dialog::backdrop {
+  background: rgba(15, 20, 25, 0.52);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}

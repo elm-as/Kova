@@ -1,0 +1,58 @@
+import { Candidate, Language } from '@/lib/types'
+import { Star, Trophy, Briefcase } from '@phosphor-icons/react'
+import { Badge } from '@/components/ui/badge'
+import { DocumentTypeBadge } from '@/components/DocumentPreview'
+import { t } from '@/lib/translations'
+
+interface CandidateHeaderProps {
+  candidate: Candidate
+  rank: number
+  isTopPick: boolean
+  language: Language
+}
+
+export default function CandidateHeader({
+  candidate,
+  rank,
+  isTopPick,
+  language,
+}: CandidateHeaderProps) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+      <div className="flex items-center gap-2">
+        <h3 className="text-lg sm:text-xl font-semibold text-foreground">
+          #{rank}
+        </h3>
+
+        {isTopPick && (
+          rank === 1 ? (
+            <Trophy size={20} weight="fill" className="text-amber-500" />
+          ) : (
+            <Star size={20} weight="fill" className="text-accent" />
+          )
+        )}
+      </div>
+
+      <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
+        {candidate.documentType && (
+          <DocumentTypeBadge documentType={candidate.documentType as any} confidence={0.8} />
+        )}
+
+        <Badge variant="default" className="bg-primary text-primary-foreground font-semibold text-xs sm:text-sm px-2 py-0.5">
+          {language === 'fr' ? 'Score' : 'Score'}: {candidate.score}/100
+        </Badge>
+
+        {candidate.status === 'hired' && (
+          <Badge className="bg-blue-500 text-white font-medium text-xs sm:text-sm px-2 py-0.5 gap-1">
+            <Briefcase size={14} weight="bold" />
+            {t('status.hired', language)}
+          </Badge>
+        )}
+      </div>
+    </div>
+  )
+}
+
+CandidateHeader.defaultProps = {
+  isTopPick: false,
+}
